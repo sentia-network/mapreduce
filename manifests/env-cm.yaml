@@ -1,0 +1,83 @@
+﻿kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: env-cm-mapreduce
+  namespace: sentia
+data:
+  settings.yml: |-
+    # --- server ---
+    ENV: prod
+    OPENAPI_ENABLE: false
+    
+    # --- logger ---
+    LOG_LEVEL: INFO
+    IS_JSON_FORMAT: true
+    
+    # --- pinecone ---
+    PINECONE_CONFIG_TYPE: deploy
+    PINECONE_DEFAULT_NAMESPACE: ""
+    
+    # ---- tencent vdb ----
+    TENCENT_VDB_API_URL: ""
+    TENCENT_VDB_API_KEY: ""
+    TENCENT_VDB_API_USERNAME: ""
+    TENCENT_VDB_DB_NAME: ""
+    TENCENT_VDB_COLLECTION_NAME: ""
+    
+    VDB_TYPE: pinecone
+
+    # --- gauss es vdb --- 
+    VDB_INDEX_SUFFIX: _prod
+    GAUSS_ES_VDB_INDEX: prod
+    GAUSS_ES_VDB_HOST: []
+    
+    # --- pinecone vdb ---
+    PINECONE_API_KEY: ""
+    
+    # --- service setting ---
+    SERVICE_MAPREDUCE_HOST: http://sentia-mapreduce:8000
+    SERVICE_THINKER_HOST: http://sentia-agent:8003
+    SERVICE_FACADE_HOST: http://sentia-basefacade:8001
+    
+    # --- LLM setting ---
+    LLM_API_KEY: sk-one-api-key
+    LLM_BASE_URL: http://sentia-oneapi:3000
+    
+    # --- Llama Parse ---
+    LLAMA_PARSE_KEY: Llama-parse-key
+    
+    # --- embed ---
+    OPENAI_MODEL_EMBEDDING_DEFAULT: text-embedding-ada-002
+    EMBED_BATCH_SIZE: 100
+    
+    # -- rerank ---
+    COHERE_API_KEY: cohere-api-key
+    COHERE_PROXY: ""
+    
+    # --- baidu ocr ---
+    BAIDU_APPID: "baidu-appid"
+    BAIDU_APIKEY: baidu-api-key
+    BAIDU_SECRET_KEY: baidu-secret-key
+    
+    # --- iflytek ---
+    IFLYTEK_APPID: iflytek-appid
+    IFLYTEK_SECRET_KEY: iflytek-secret-key
+    
+    # --- kafka client---
+    KAFKA_ENABLE: 1
+    KAFKA_BOOTSTRAP_SERVERS: kafka.kafka.svc.cluster.local:9092
+    KAFKA_PRODUCER_ACKS: 1
+    KAFKA_PRODUCER_LINGER_MS: 100
+    KAFKA_CONSUMER_DEFAULT_GROUP: sentia
+    KAFKA_CONSUMER_AUTO_OFFSET_RESET: latest
+    KAFKA_CONSUMER_MAX_POLL_RECORDS: 5
+    KAFKA_CONSUMER_SESSION_TIMEOUT_MS: 100000
+    KAFKA_CONSUMER_HEARTBEAT_INTERVAL_MS: 30000
+    KAFKA_CONSUMER_TIMEOUT_MS: 2000
+    
+    # --- kafka topic ---
+    KAFKA_TOPIC_DATASET_JOB: mapreduce_dataset_job_topic
+    KAFKA_TOPIC_DATASET_CONSUMER_COUNT: 3
+    KAFKA_TOPIC_EMBED_CREATE_JOB: mapreduce_embed_create_topic
+    KAFKA_TOPIC_EMBED_CREATE_CONSUMER_COUNT: 3
+    KAFKA_TOPIC_USAGE: finance_consumption_usage_topic

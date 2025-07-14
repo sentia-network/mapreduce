@@ -1,0 +1,42 @@
+# Ignore Python cache files
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+*.pyc.so
+
+# Ignore git history
+.git
+
+# Ignore all log files
+*.log
+
+# Ignore all .env files
+*.env
+
+# Ignore test-related files
+tests/
+*.test.py
+*.test.yaml
+
+# Ignore all .md files
+*.md
+
+# Ignore other unnecessary files
+.DS_Store
+*.bak
+*.swp
+*.swo
+#
+**/.git
+Dockerfile
+deploy
+deploy-hw
+README.md
+run.sh
+.editorconfig
+.pre-commit-config.yaml
+.dockerignore
+.gitignore
+.gitlab-ci.yml
+.gitlab-ci.yaml

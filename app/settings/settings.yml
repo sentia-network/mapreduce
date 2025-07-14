@@ -1,0 +1,69 @@
+# --- server ---
+ENV: dev
+OPENAPI_ENABLE: true
+
+# --- logger ---
+LOG_LEVEL: INFO
+IS_JSON_FORMAT: false
+
+# === vdb ===
+VDB_TYPE: pinecone # pinecone, gauss_es
+VDB_INDEX_SUFFIX: _dev # ""
+
+# --- gauss es vdb ---
+GAUSS_ES_VDB_INDEX: dev
+GAUSS_ES_VDB_HOST:
+  - http://admin:12345678@127.0.0.1:9200
+
+# --- pinecone vdb ---
+PINECONE_API_KEY: ""
+
+# --- service setting ---
+SERVICE_MAPREDUCE_HOST: http://sentia-mapreduce:8000
+SERVICE_THINKER_HOST: http://sentia-agent:8003
+SERVICE_FACADE_HOST: http://sentia-basefacade:8001
+
+# --- LLM setting ---
+LLM_API_KEY: ""
+LLM_BASE_URL: https://one-api.example.com/v1
+
+
+# --- Llama Parse ---
+LLAMA_PARSE_KEY: ""
+
+# --- embed ---
+OPENAI_MODEL_EMBEDDING_DEFAULT: text-embedding-ada-002
+EMBED_BATCH_SIZE: 100
+
+# -- rerank ---
+COHERE_API_KEY: ""
+COHERE_PROXY: http://127.0.0.1:8557
+
+# --- baidu ocr ---
+BAIDU_APPID: ""
+BAIDU_APIKEY: ""
+BAIDU_SECRET_KEY: ""
+
+# --- iflytek ---
+IFLYTEK_APPID: ""
+IFLYTEK_SECRET_KEY: ""
+
+# --- kafka client---
+KAFKA_ENABLE: 1
+#KAFKA_BOOTSTRAP_SERVERS: 127.0.0.1:9092,127.0.0.1:9093,127.0.0.1:9094
+KAFKA_BOOTSTRAP_SERVERS: kafka.kafka.svc.cluster.local:9092
+KAFKA_PRODUCER_ACKS: 1
+KAFKA_PRODUCER_LINGER_MS: 100
+KAFKA_CONSUMER_DEFAULT_GROUP: sentia_dev
+KAFKA_CONSUMER_AUTO_OFFSET_RESET: latest
+KAFKA_CONSUMER_MAX_POLL_RECORDS: 5
+KAFKA_CONSUMER_SESSION_TIMEOUT_MS: 100000
+KAFKA_CONSUMER_HEARTBEAT_INTERVAL_MS: 30000
+KAFKA_CONSUMER_TIMEOUT_MS: 2000
+
+# --- kafka topic ---
+KAFKA_TOPIC_DATASET_JOB: mapreduce_dataset_job_topic_dev
+KAFKA_TOPIC_DATASET_CONSUMER_COUNT: 3
+KAFKA_TOPIC_EMBED_CREATE_JOB: mapreduce_embed_create_topic_dev
+KAFKA_TOPIC_EMBED_CREATE_CONSUMER_COUNT: 3
+KAFKA_TOPIC_USAGE: finance_consumption_usage_topic_dev
